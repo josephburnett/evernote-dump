@@ -64,6 +64,7 @@ class NoteParser(ContentHandler):
         elif tag == "content":
             pass
         elif tag == "resource":
+            self.attachment.set_filename(self.note.get_title())
             self.print_message(f"---Exporting Attachment: {self.attachment.get_filename()}")
             try:
                 self.attachment.finalize(self.settings.preserve_file_names)

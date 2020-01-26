@@ -13,7 +13,8 @@ class Attachment(object):
     Attachment Class convert the base64 byte string into an actual file.
     File name extension is guessed from mime type if not found.
     """
-    MEDIA_PATH = "media/"
+    #MEDIA_PATH = "media/"
+    MEDIA_PATH = ""
     TIME_FORMAT = "%Y-%m-%d_%H-%M-%S"
 
     def __init__(self):
@@ -52,13 +53,14 @@ class Attachment(object):
                     extension = "jpg"
             except (ValueError, TypeError):
                 extension = "unknown"
-
+        keep_file_names = True
         if keep_file_names and base:
             # Limit filename length to 128 characters
             self._filename = path_safe_string(base[:128]) + '.' + extension
         else:
             # Create a filename from created date if none found or unwanted
-            self._filename = self._created_date.strftime(self.TIME_FORMAT) + '.' + extension
+            #self._filename = self._created_date.strftime(self.TIME_FORMAT) + '.' + extension
+            self._filename = self._filename + '.' + extension
 
         # Remove spaces from filenames since markdown links won't work with spaces
         self._filename = self._filename.replace(" ", "_")

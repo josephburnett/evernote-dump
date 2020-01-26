@@ -112,10 +112,11 @@ class Note(object):
         self._markdown = self.html2text.handle(self._html.decode('utf-8'))
 
     def create_file(self):
-        with open(os.path.join(self._path, self._filename), 'w', encoding='UTF-8', errors='replace') as outfile:
-            outfile.write(self._markdown)
-        os.utime(os.path.join(self._path, self._filename),
-                 (self._created_date.timestamp(), self._updated_date.timestamp()))
+        pass
+        #with open(os.path.join(self._path, self._filename), 'w', encoding='UTF-8', errors='replace') as outfile:
+        #    outfile.write(self._markdown)
+        #os.utime(os.path.join(self._path, self._filename),
+        #         (self._created_date.timestamp(), self._updated_date.timestamp()))
 
     def create_filename(self):
         # make sure title can be converted to filename
